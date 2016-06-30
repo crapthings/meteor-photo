@@ -1,0 +1,36 @@
+head
+  meta(http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'")
+
+body
+
+  +unless currentUser
+    +login
+  +else
+    +test
+    +files
+
+template(name='login')
+  form
+    input(type='text' value='demo').username
+    input(type='password' value='demo').password
+    input(type='submit')
+
+template(name='test')
+
+  h4 相机测试
+
+  h3= currentUser.username
+
+  +if currentUser.avatar
+    img(src="data:image/png;base64,{{currentUser.avatar}}" style="border-radius: 50%; width: 100px; height: 100px;")
+
+  button.open-camera 打开相机
+  button.open-album 打开相机
+
+  input#picker(type='file')
+
+template(name='files')
+
+  +each files
+    div
+      img(src="http://10.180.2.196:3000/gridfs/files/{{md5}}" width="200")
