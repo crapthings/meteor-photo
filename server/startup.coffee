@@ -1,7 +1,7 @@
-Meteor.startup ->
+# Meteor.startup ->
 
-  BrowserPolicy.content.allowOriginForAll '*'
+#   BrowserPolicy.content.allowOriginForAll '*'
 
-  WebApp.connectHandlers.use (req, res, next) ->
-    res.setHeader "Access-Control-Allow-Origin", "*"
-    next()
+#   WebApp.connectHandlers.use (req, res, next) ->
+#     res.setHeader "Access-Control-Allow-Origin", "*"
+#     next()

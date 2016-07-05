@@ -3,11 +3,11 @@ head
 
 body
 
-  +unless currentUser
+  //- +unless currentUser
     +login
-  +else
-    +test
-    +files
+  //- +else
+  +test
+  +files
 
 template(name='login')
   form
@@ -33,4 +33,4 @@ template(name='files')
 
   +each files
     div
-      img(src="http://10.180.2.196:3000/gridfs/files/{{md5}}" width="200")
+      img(src="/gridfs/files/{{md5}}" width="200")
